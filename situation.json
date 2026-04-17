@@ -10,8 +10,8 @@
       "id": 1,
       "casus": "Казус 1",
       "title": "Конфликт приоритетов (форма А и форма А)",
-      "image": "casus_01_image.png",
-	  "background": "map_01.png",
+      "image": "https://alexautro.github.io/apo_intern/images/casus_01_image.png",
+	  "background": "https://alexautro.github.io/apo_intern/images/map_01.png",
 	  "icon": "mission_02.png",
       "description": "Вы стоите в коридоре между Небом и Адом. В руках — две папки: «Мягкий, гуманный и максимально незаметный Апокалипсис» и «Зрелищное обрушение мироздания с минимальным бюджетом». Сверху приходят два срочных сообщения, и оба помечены как «сделать в первую очередь».",
       "options": [
@@ -39,9 +39,9 @@
       "id": 2,
       "casus": "Казус 2",
       "title": "Находка в овраге (инвентаризация не проводилась)",
-      "image": "casus_02_image.png",
-	  "background": "map_02.png",
-	  "icon": "mission_03.png",
+      "image": "https://alexautro.github.io/apo_intern/images/casus_02_image.png",
+	  "background": "https://alexautro.github.io/apo_intern/images/map_02.png",
+	  "icon": "https://alexautro.github.io/apo_intern/images/mission_03.png",
       "description": "В тихом городке мальчик с собакой находит в овраге коробку с «игрушками»: маленький меч, странный диск и миниатюрную корону, слишком уж похожие на серьёзные артефакты. Собака уже уверена, что всё это принадлежит ей.",
       "options": [
         {
@@ -68,9 +68,9 @@
       "id": 3,
       "casus": "Казус 3",
       "title": "Четвёртый всадник опаздывает",
-      "image": "casus_03_image.png",
-	  "background": "map_03.png",
-	  "icon": "mission_04.png",
+      "image": "https://alexautro.github.io/apo_intern/images/casus_03_image.png",
+	  "background": "https://alexautro.github.io/apo_intern/images/map_03.png",
+	  "icon": "https://alexautro.github.io/apo_intern/images/mission_04.png",
       "description": "До выезда Четырёх всадников остаётся две минуты, но один из них застрял: то ли коня не доставили, то ли мотоцикл не согласовали. Остальные уже ждут с заведёнными апокалиптическими двигателями.",
       "options": [
         {
@@ -97,9 +97,9 @@
       "id": 4,
       "casus": "Казус 4",
       "title": "Чудо не того масштаба",
-      "image": "casus_04_image.png",
-	  "background": "map_04.png",
-	  "icon": "mission_05.png",
+      "image": "https://alexautro.github.io/apo_intern/images/casus_04_image.png",
+	  "background": "https://alexautro.github.io/apo_intern/images/map_04.png",
+	  "icon": "https://alexautro.github.io/apo_intern/images/mission_05.png",
       "description": "В небольшой булочной подряд происходят три мелких чуда: кофе не заканчивается, сгоревший пирог сам себя чинит, а надпись «Скидка» появляется без участия хозяина. Рай и Ад немедленно начинают спорить, кому засчитать KPI.",
       "options": [
         {
@@ -126,9 +126,9 @@
       "id": 5,
       "casus": "Казус 5",
       "title": "Новость не по расписанию",
-      "image": "casus_05_image.png",
-	  "background": "map_05.png",
-	  "icon": "mission_06.png",
+      "image": "chttps://alexautro.github.io/apo_intern/images/asus_05_image.png",
+	  "background": "https://alexautro.github.io/apo_intern/images/map_05.png",
+	  "icon": "https://alexautro.github.io/apo_intern/images/mission_06.png",
       "description": "Крупный новостной канал получает утечку: «конец света, возможно, запланирован на ближайшее время». Редакция думает, выпускать сюжет или нет.",
       "options": [
         {
@@ -155,9 +155,9 @@
       "id": 6,
       "casus": "Казус 6",
       "title": "Производственное разногласие",
-      "image": "casus_06_image.png",
-	  "background": "map_06.png",
-	  "icon": "mission_07.png",
+      "image": "https://alexautro.github.io/apo_intern/images/casus_06_image.png",
+	  "background": "https://alexautro.github.io/apo_intern/images/map_06.png",
+	  "icon": "https://alexautro.github.io/apo_intern/images/mission_07.png",
       "description": "Ваш ангельский и демонический кураторы начинают спорить прямо при вас: один требует немедленно ускорить знамения, другой — немедленно их замедлить, чтобы было интереснее.",
       "options": [
         {
@@ -184,9 +184,9 @@
       "id": 7,
       "casus": "Казус 7",
       "title": "Пророчество (см. приложения А, Б и В)",
-      "image": "casus_07_image.png",
-	  "background": "map_07.png",
-	  "icon": "mission_08.png",
+      "image": "https://alexautro.github.io/apo_intern/images/casus_07_image.png",
+	  "background": "https://alexautro.github.io/apo_intern/images/map_07.png",
+	  "icon": "https://alexautro.github.io/apo_intern/images/mission_08.png",
       "description": "Из архива достают древнее пророчество о текущем периоде. Хорошая новость: оно действительно про сейчас. Плохая: понять его можно ровно тремя взаимоисключающими способами.",
       "options": [
         {
@@ -213,9 +213,9 @@
       "id": 8,
       "casus": "Казус 8",
       "title": "Праздник Апокалипсиса",
-      "image": "casus_08_image.png",
-	  "background": "map_08.png",
-	  "icon": "mission_09.png",
+      "image": "https://alexautro.github.io/apo_intern/images/casus_08_image.png",
+	  "background": "https://alexautro.github.io/apo_intern/images/map_08.png",
+	  "icon": "https://alexautro.github.io/apo_intern/images/mission_09.png",
       "description": "Люди начинают устраивать фестивали и распродажи «в честь возможного конца света». Появляются мерч, аттракционы и фотозоны. Апокалипсис внезапно становится модной темой.",
       "options": [
         {
@@ -242,7 +242,9 @@
       "id": 9,
       "casus": "Казус 9",
       "title": "Мир существует. Причины уточняются",
-      "image": "casus_10_image.png",
+      "image": "https://alexautro.github.io/apo_intern/images/casus_09_image.png",
+	  "background": "https://alexautro.github.io/apo_intern/images/map_09.png",
+	  "icon": "https://alexautro.github.io/apo_intern/images/mission_10.png",
       "description": "Начальство требует промежуточный отчёт: почему мир ещё существует, но с каждым днём ведёт себя всё страннее. Форму отчётности, разумеется, никто не приложил.",
       "options": [
         {
@@ -269,7 +271,7 @@
       "id": 10,
       "casus": "Казус 10",
       "title": "Последний рычаг",
-      "image": "",
+      "image": "https://alexautro.github.io/apo_intern/images/casus_10_image.png",
       "description": "Вам выдают «последний рычаг»: кнопку, формуляр и три сценария на выбор. Что бы вы ни решили, запись об этом навсегда останется в личном деле.",
       "options": [
         {
