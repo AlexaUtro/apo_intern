@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Стажёр Апокалипсиса v519</title>
+<title>Стажёр Апокалипсиса</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -427,7 +427,7 @@ html, body {
 
 <!-- LAST SLIDE -->
 <div class="slide img-slide" id="s-last">
-  <img class="slide-bg" src="https://alexautro.github.io/apo_intern/images/last.png" alt="">
+  <video class="slide-bg" id="last-video" src="https://alexautro.github.io/apo_intern/images/last.mp4" autoplay playsinline muted style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
   <img class="popup" id="lp1" src="https://alexautro.github.io/apo_intern/images/last_1.png" alt="">
   <img class="popup" id="lp2" style="position:absolute;left:7.14%;top:70.97%;width:33.28%;height:21.78%;" src="https://alexautro.github.io/apo_intern/images/last_2.png" alt="">
   <img class="popup" id="lp3" src="https://alexautro.github.io/apo_intern/images/last_3.png" alt="">
@@ -550,6 +550,7 @@ function mkScalesPanel(pfx){
       width:auto;
       object-fit:contain;
       z-index:5;
+      opacity:1;
     `;
     panel.appendChild(icon);
 
@@ -600,13 +601,14 @@ function renderScales(pfx, anim, prevSnap){
     const startPct = TAPE_LEFT_PCT + (p[k] / 100) * (TAPE_W_PCT - ICON_W_PCT);
     const endPct   = TAPE_LEFT_PCT + (state[k] / 100) * (TAPE_W_PCT - ICON_W_PCT);
 
-    // Place icon at PREV position first (no transition)
+    // Place icon at PREV position instantly, fully visible
     icon.style.transition = 'none';
+    icon.style.opacity = '1';
     icon.style.left = startPct + '%';
 
-    // Then animate to current position
+    // Then animate to current position with ease-in-out
     requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      icon.style.transition = 'left 0.7s cubic-bezier(.34,1.4,.64,1)';
+      icon.style.transition = 'left 0.8s cubic-bezier(.45,0,.55,1)';
       icon.style.left = endPct + '%';
     }));
 
@@ -885,6 +887,8 @@ function showLastSlide(){
   showSlide('s-last').then(()=>{
     const sl=document.getElementById('s-last');
     if(sl) sl.style.display='block';
+    const vid=document.getElementById('last-video');
+    if(vid){ vid.currentTime=0; vid.play(); }
     const p1=document.getElementById('lp1');
     const p2=document.getElementById('lp2');
     const p3=document.getElementById('lp3');
@@ -897,7 +901,7 @@ function showLastSlide(){
           setTimeout(()=>{if(p1){p1.style.transition='opacity .8s ease';p1.style.opacity='0';}},2000);
         },1000);
       },1000);
-    },400);
+    },4000);
   });
 }
 
@@ -1001,7 +1005,7 @@ function init(){
   const imgs=[
     BASE+'map_intro.png', BASE+'map_intro_1.png', BASE+'map_intro_2.png',
     BASE+'map_00.png', BASE+'mission_01.png',
-    BASE+'last.png', BASE+'last_1.png', BASE+'last_2.png', BASE+'last_3.png',
+    BASE+'last_1.png', BASE+'last_2.png', BASE+'last_3.png',
     // Scale icons
     BASE+'apo_icon_left.png', BASE+'apo_icon_right.png',
     BASE+'heaven_icon.png',
