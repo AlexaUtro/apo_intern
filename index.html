@@ -30,6 +30,7 @@ html, body {
 
 :root {
   --v-pad: 20px;
+  --fs: 0.001;
 }
 
 #stage {
@@ -163,7 +164,7 @@ html, body {
   padding: 2% 2.5%;
   font-family: 'Franklin Gothic Book', 'Arial Narrow', Arial, sans-serif;
   font-weight: 400;
-  font-size: clamp(28px,3vh,38px); line-height: 1.55;
+  font-size: calc(var(--fs) * 18); line-height: 1.55;
   color: var(--cream);
   background: rgba(15,8,2,.72);
   z-index: 15; opacity: 0; transition: opacity .25s ease;
@@ -190,13 +191,13 @@ html, body {
 }
 .cas-num {
   font-family: 'Caveat', cursive; font-style: italic; font-weight: 700;
-  font-size: 36px; color: var(--dark);
+  font-size: calc(var(--fs) * 24); color: var(--dark);
   line-height: 1; white-space: nowrap; flex-shrink: 0;
 }
 .cas-sep { width: 2px; flex-shrink: 0; }
 .cas-title {
   font-family: 'Playfair Display', serif; font-weight: 700;
-  font-size: 28px; color: #561643; line-height: 1.15;
+  font-size: calc(var(--fs) * 20); color: #561643; line-height: 1.15;
 }
 
 /* ── casus-body: invisible wrapper ── */
@@ -211,21 +212,21 @@ html, body {
   display: flex; flex-direction: column;
   overflow: hidden;
 }
-.cas-top-block { flex-shrink: 0; }
+.cas-top-block { flex-shrink: 1; min-height: 0; overflow: hidden; }
 .cas-desc {
   font-family: 'Franklin Gothic Book', 'Arial Narrow', Arial, sans-serif;
-  font-weight: 400; font-size: 28px; line-height: 1.55;
+  font-weight: 400; font-size: calc(var(--fs) * 18); line-height: 1.55;
   color: var(--dark); margin-bottom: 0;
   white-space: pre-line;
 }
 .cas-q {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-weight: 700; font-size: 28px; color: var(--dark);
+  font-weight: 700; font-size: calc(var(--fs) * 18); color: var(--dark);
   margin-top: 4%; margin-bottom: 0;
 }
 .cas-options-block {
   flex-shrink: 0;
-  margin-top: calc(28px * 1.55 * 1); /* 1 empty line */
+  margin-top: calc(var(--fs) * 18 * 1.55);
 }
 .options-list { list-style: none; display: flex; flex-direction: column; }
 .opt {
@@ -240,7 +241,7 @@ html, body {
 .opt-radio {
   width: 14px; height: 14px; flex-shrink: 0;
   border: 1.5px solid var(--dark); border-radius: 50%;
-  margin-top: calc((1.45 * 28px - 14px) / 2);
+  margin-top: calc((1.45 * var(--fs) * 18 - 14px) / 2);
   position: relative;
 }
 .opt.sel .opt-radio { border-color: var(--gold); }
@@ -252,7 +253,7 @@ html, body {
 }
 .opt-text {
   font-family: 'Franklin Gothic Book', 'Arial Narrow', Arial, sans-serif;
-  font-weight: 400; font-size: 28px; line-height: 1.5;
+  font-weight: 400; font-size: calc(var(--fs) * 18); line-height: 1.5;
   color: var(--dark);
 }
 
@@ -283,13 +284,13 @@ html, body {
 .fs-item { position: absolute; }
 .fs-name {
   font-family: 'Playfair Display', serif; font-weight: 700;
-  font-size: 10px; color: var(--cream);
+  font-size: calc(var(--fs) * 8.8); color: var(--cream);
   text-shadow: 0 1px 5px rgba(0,0,0,.9);
   letter-spacing: 1.5px; text-transform: uppercase;
 }
 .fs-val {
   font-family: 'Playfair Display', serif; font-weight: 700;
-  font-size: clamp(26px,4.5vw,52px); color: var(--cream);
+  font-size: calc(var(--fs) * 40.4); color: var(--cream);
   text-shadow: 0 2px 8px rgba(0,0,0,.8), 0 0 24px rgba(200,168,75,.35);
   line-height: 1.05;
 }
@@ -334,7 +335,7 @@ html, body {
 
   /* Report box: smaller font */
   .report-box {
-    font-size: clamp(14px, 2.2vh, 22px);
+    font-size: calc(var(--fs) * 19.3);
     height: 20%;
     bottom: 2%; left: 2%; right: 2%;
     padding: 2% 3%;
@@ -345,8 +346,8 @@ html, body {
     left: 3%; top: 3%;
     width: 94%; height: 8%;
   }
-  .cas-num  { font-size: clamp(18px, 3.5vw, 28px); }
-  .cas-title { font-size: clamp(13px, 2.4vw, 20px); }
+  .cas-num  { font-size: calc(var(--fs) * 18); }
+  .cas-title { font-size: calc(var(--fs) * 14.9); }
 
   /* Single-column layout for casus */
   .casus-left {
@@ -355,19 +356,19 @@ html, body {
     height: 52%;
   }
   .cas-desc {
-    font-size: clamp(13px, 2.2vw, 18px);
+    font-size: calc(var(--fs) * 15.8);
     line-height: 1.45;
   }
   .cas-q {
-    font-size: clamp(13px, 2.2vw, 18px);
+    font-size: calc(var(--fs) * 15.8);
     margin-top: 2%;
   }
   .cas-options-block { margin-top: 1.5%; }
-  .opt-text { font-size: clamp(12px, 2vw, 17px); line-height: 1.4; }
+  .opt-text { font-size: calc(var(--fs) * 14.9); line-height: 1.4; }
   .opt { padding: 1.8% 0; }
   .opt-radio {
     width: 11px; height: 11px;
-    margin-top: calc((1.4 * 16px - 11px) / 2);
+    margin-top: calc((1.4 * var(--fs) * 14.1 - 11px) / 2);
   }
 
   /* Image: below text block */
@@ -387,7 +388,7 @@ html, body {
     color: var(--dark);
     border: none; border-radius: 6px;
     font-family: 'Franklin Gothic Medium', Arial, sans-serif;
-    font-size: clamp(14px, 2.4vw, 20px);
+    font-size: calc(var(--fs) * 14.9);
     font-weight: 700; cursor: pointer;
     align-items: center; justify-content: center;
     z-index: 30;
@@ -410,7 +411,7 @@ html, body {
 #preloader.fade-out { opacity: 0; pointer-events: none; }
 .pre-title {
   font-family: 'Playfair Display', serif; font-weight: 700;
-  font-size: clamp(18px, 3vw, 32px);
+  font-size: clamp(14px, 3vw, 32px);
   color: var(--cream);
   letter-spacing: 3px;
   text-shadow: 0 0 20px rgba(200,168,75,.6);
@@ -443,7 +444,7 @@ html, body {
   <div class="pre-title">СТАЖЁР АПОКАЛИПСИСА</div>
   <div class="pre-bar-wrap"><div class="pre-bar" id="pre-bar"></div></div>
   <div class="pre-pct" id="pre-pct">0%</div>
-  <div style="margin-top:24px;font-size:12px;color:rgba(252,246,217,.4);font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;letter-spacing:1px;text-align:center;">Для смартфона используйте горизонтальное положение</div>
+  <div id="mobile-hint" style="display:none;margin-top:24px;font-size:12px;color:rgba(252,246,217,.4);font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;letter-spacing:1px;text-align:center;">Для смартфона используйте горизонтальное положение</div>
 </div>
 
 
@@ -644,7 +645,7 @@ function mkScalesPanel(pfx){
       align-items:center;
       font-family:'Playfair Display',serif;
       font-weight:700;
-      font-size:36px;
+      font-size:calc(var(--fs) * 31.6);
       color:#FCF6D9;
       text-shadow:0 1px 3px rgba(0,0,0,.8);
       opacity:1;
@@ -793,7 +794,7 @@ function buildSlides(){
       const val=document.createElement('div');
       val.className='fs-val';
       val.id=`fv${f.id}${k}`;
-      val.style.cssText=`font-family:'Playfair Display',serif;font-weight:700;font-size:36px;color:${valColor};text-shadow:none;`;
+      val.style.cssText=`font-family:'Playfair Display',serif;font-weight:700;font-size:calc(var(--fs) * 31.6);color:${valColor};text-shadow:none;`;
       val.textContent='0';
       item.appendChild(val);
       scDiv.appendChild(item);
@@ -856,7 +857,7 @@ function startGame(){
       const overlay=document.createElement('div');
       overlay.id='play-overlay';
       overlay.style.cssText='position:absolute;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,.45);';
-      overlay.innerHTML='<div style="color:#FCF6D9;font-family:Playfair Display,serif;font-size:clamp(16px,2.5vw,26px);letter-spacing:2px;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.8);">▶&nbsp;&nbsp;Нажмите для запуска</div>';
+      overlay.innerHTML='<div style="color:#FCF6D9;font-family:Playfair Display,serif;font-size:calc(var(--fs) * 22.8);letter-spacing:2px;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.8);">▶&nbsp;&nbsp;Нажмите для запуска</div>';
       overlay.onclick=()=>{
         overlay.remove();
         vid.play().catch(()=>{});
@@ -1083,7 +1084,20 @@ function preloadImages(urls, onProgress){
 }
 
 // ── INIT ──
+function updateFs(){
+  const w = document.getElementById('stage-inner').clientWidth;
+  // 1px per 1px of container width, fonts use calc(var(--fs) * N) where N is px at 1000px wide
+  document.documentElement.style.setProperty('--fs', (w / 1000) + 'px');
+}
+
 function init(){
+  updateFs();
+  window.addEventListener('resize', updateFs);
+  // Show mobile hint only on touch devices
+  if(navigator.maxTouchPoints > 0){
+    const hint = document.getElementById('mobile-hint');
+    if(hint) hint.style.display = 'block';
+  }
   setProgress(0);
 
   // Use embedded data (works with file:// without CORS issues)
