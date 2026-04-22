@@ -168,7 +168,7 @@ html, body {
   font-size: calc(var(--fs) * 18); line-height: 1.55;
   color: var(--cream);
   background: rgba(15,8,2,.72);
-  z-index: 15; opacity: 0; transition: opacity .25s ease;
+  z-index: 15; opacity: 0;
   display: flex; align-items: center;
   pointer-events: none;
 }
@@ -543,8 +543,10 @@ const clamp = v => Math.max(0,Math.min(100,v));
 function typograph(text){
   // Match preposition/conjunction preceded by space or start of string,
   // followed by space — works correctly with Cyrillic
-  return text.replace(/(^|\s)(в|на|с|к|о|об|из|по|за|от|до|не|но|а|и|или|то|же|бы|ли|как|так|для|при|без|над|под|про|уже|ещё|это|его|её|их|всё|был|была|были)\s+/gim,
+  // Non-breaking space after short prepositions/conjunctions
+  text = text.replace(/(^|\s)(в|на|с|к|о|об|из|по|за|от|до|не|но|а|и|или|то|же|бы|ли|как|так|для|при|без|над|под|про|уже|ещё|это|его|её|их|всё|был|была|были)\s+/gim,
     (m, before, p1) => before + p1 + '\u00A0');
+  return text;
 }
 
 function applyDelta(d){
@@ -941,7 +943,7 @@ function goMapSlide(idx,report,snapPrev){
 
     // Show report
     const rep=document.getElementById(`rep${idx+1}`);
-    if(rep){ rep.textContent=typograph(report); requestAnimationFrame(()=>rep.classList.add('show')); }
+    if(rep){ rep.textContent=typograph(report); rep.classList.add('show'); }
 
     // Wire next icon click
     const ico=document.getElementById(`ico${idx+1}`);
