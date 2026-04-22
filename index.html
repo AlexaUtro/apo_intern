@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" style="background:#000;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Стажёр Апокалипсиса</title>
+<style>html,body{background:#000;margin:0;padding:0;}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -453,13 +454,6 @@ html, body {
   <video id="intro-video" autoplay playsinline preload="auto">
     <source src="https://alexautro.github.io/apo_intern/images/intern_intro.mp4" type="video/mp4">
   </video>
-  <button id="btn-skip-debug" onclick="skipIntro()" style="
-    position:absolute; bottom:28px; right:28px; z-index:100;
-    background:rgba(255,80,80,.75); border:2px solid #ff5050;
-    color:#fff; padding:8px 20px; font-size:13px; font-family:monospace;
-    letter-spacing:1px; cursor:pointer; border-radius:3px;">
-    [DEBUG] ПРОПУСТИТЬ →
-  </button>
 </div>
 
 <!-- MAP INTRO -->
@@ -506,7 +500,7 @@ html, body {
 
 <!-- LAST SLIDE -->
 <div class="slide img-slide" id="s-last">
-  <video class="slide-bg" id="last-video" src="https://alexautro.github.io/apo_intern/images/last.mp4" autoplay playsinline muted style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+  <video class="slide-bg" id="last-video" src="https://alexautro.github.io/apo_intern/images/last.mp4" autoplay playsinline muted preload="auto" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
   <img class="popup" id="lp1" src="https://alexautro.github.io/apo_intern/images/last_1.png" alt="">
   <img class="popup" id="lp2" style="position:absolute;left:7.14%;top:70.97%;width:33.28%;height:21.78%;" src="https://alexautro.github.io/apo_intern/images/last_2.png" alt="">
   <img class="popup" id="lp3" src="https://alexautro.github.io/apo_intern/images/last_3.png" alt="">
@@ -999,7 +993,7 @@ function showLastSlide(){
           setTimeout(()=>{if(p1){p1.style.transition='opacity .8s ease';p1.style.opacity='0';}},2000);
         },1000);
       },1000);
-    },4000);
+    },3000);
   });
 }
 
@@ -1151,6 +1145,10 @@ function init(){
   // Animate progress bar quickly instead
   buildSlides();
   bindEvents();
+
+  // Preload video in background
+  const vid = document.getElementById('last-video');
+  if(vid){ vid.load(); }
 
   // Preload images with real progress
   preloadImages(unique, pct => setProgress(10 + pct * 0.9))
