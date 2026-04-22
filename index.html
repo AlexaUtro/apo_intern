@@ -69,7 +69,7 @@ html, body {
 #intro-video {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* ━━━ FULL-SCREEN IMAGE SLIDE ━━━ */
@@ -1046,7 +1046,7 @@ function bindEvents(){
     if(action==='next' && fid)         { showConclusion(parseInt(fid)); return; }
     if(action==='tolast')              { showLastSlide(); return; }
     if(id==='lp2'||id==='lov2')        { resetGame(); return; }
-    if(id==='lp3'||id==='lov3')        { try{window.close();}catch(ex){} }
+    if(id==='lp3'||id==='lov3')        { const isChrome=!!window.chrome&&!window.opr; if(isChrome){window.location.href='about:blank';}else{try{window.close();}catch(ex){}} }
   });
 }
 
