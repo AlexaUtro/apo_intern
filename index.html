@@ -320,6 +320,83 @@ html, body {
 .final-btn-next.show, .final-btn-concl.show { top: 89.39%; opacity: 1; pointer-events: auto; }
 
 
+/* ━━━ MOBILE / PORTRAIT ━━━ */
+@media (orientation: portrait) {
+
+  /* Stage: full screen, no padding */
+  #stage { padding: 0; }
+
+  /* Stage-inner: 9:16 aspect ratio */
+  #stage-inner {
+    height: 100vh;
+    width: min(100vw, calc(100vh * 9 / 16));
+  }
+
+  /* Report box: smaller font */
+  .report-box {
+    font-size: clamp(14px, 2.2vh, 22px);
+    height: 20%;
+    bottom: 2%; left: 2%; right: 2%;
+    padding: 2% 3%;
+  }
+
+  /* ── Casus slide ── */
+  .casus-header {
+    left: 3%; top: 3%;
+    width: 94%; height: 8%;
+  }
+  .cas-num  { font-size: clamp(18px, 3.5vw, 28px); }
+  .cas-title { font-size: clamp(13px, 2.4vw, 20px); }
+
+  /* Single-column layout for casus */
+  .casus-left {
+    left: 3%; top: 13%;
+    width: 94%;
+    height: 52%;
+  }
+  .cas-desc {
+    font-size: clamp(13px, 2.2vw, 18px);
+    line-height: 1.45;
+  }
+  .cas-q {
+    font-size: clamp(13px, 2.2vw, 18px);
+    margin-top: 2%;
+  }
+  .cas-options-block { margin-top: 1.5%; }
+  .opt-text { font-size: clamp(12px, 2vw, 17px); line-height: 1.4; }
+  .opt { padding: 1.8% 0; }
+  .opt-radio {
+    width: 11px; height: 11px;
+    margin-top: calc((1.4 * 16px - 11px) / 2);
+  }
+
+  /* Image: below text block */
+  .casus-right {
+    left: 3%; top: 67%;
+    width: 94%; height: 30%;
+  }
+
+  /* Submit button */
+  .btn-submit {
+    display: flex;
+    position: absolute;
+    left: 3%; bottom: 3%;
+    width: 94%;
+    padding: 3% 0;
+    background: var(--gold);
+    color: var(--dark);
+    border: none; border-radius: 6px;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    font-size: clamp(14px, 2.4vw, 20px);
+    font-weight: 700; cursor: pointer;
+    align-items: center; justify-content: center;
+    z-index: 30;
+    transition: background .15s;
+  }
+  .btn-submit:active { background: #b8942e; }
+  .btn-submit:disabled { opacity: 0.4; cursor: default; }
+}
+
 /* ━━━ DEBUG: clickable zones ━━━ */
 /* ━━━ PRELOADER ━━━ */
 #preloader {
@@ -366,6 +443,7 @@ html, body {
   <div class="pre-title">СТАЖЁР АПОКАЛИПСИСА</div>
   <div class="pre-bar-wrap"><div class="pre-bar" id="pre-bar"></div></div>
   <div class="pre-pct" id="pre-pct">0%</div>
+  <div style="margin-top:24px;font-size:12px;color:rgba(252,246,217,.4);font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;letter-spacing:1px;text-align:center;">Для смартфона используйте горизонтальное положение</div>
 </div>
 
 
@@ -417,9 +495,9 @@ html, body {
     </div>
     <div class="casus-right">
       <img class="cas-img" id="cas-img" src="" alt="">
-
     </div>
   </div>
+  <button class="btn-submit" id="btn-submit" disabled onclick="submitChoice()">Подтвердить выбор</button>
 </div>
 
 <!-- DYNAMIC SLIDES (maps 1-9, finals, conclusions) -->
@@ -583,7 +661,14 @@ function mkScalesPanel(pfx){
 // Icon travels: left = TAPE_LEFT + (value/100) * (TAPE_W - ICON_SIZE_W)
 const TAPE_LEFT_PCT = 2.5;
 const TAPE_W_PCT    = 31.51;
-const ICON_W_PCT    = 10.6 * 9 / 16; // ~5.96% of slide width
+const ICON_W_PCT    = 10.6 * 9 / 16; // ~5.96% of slide width (landscape)
+
+// Portrait: slide is 9:16, icon width in % of slide width = 10.6% * 16/9
+const TAPE_LEFT_PCT_P = 2.5;
+const TAPE_W_PCT_P    = 31.51;
+const ICON_W_PCT_P    = 10.6 * 16 / 9; // ~18.84% of slide width (portrait)
+
+const isPortrait = () => window.matchMedia('(orientation: portrait)').matches;
 
 function renderScales(pfx, anim, prevSnap){
   const p = prevSnap || prev;
@@ -597,9 +682,12 @@ function renderScales(pfx, anim, prevSnap){
     // Update icon image based on direction
     icon.src = BASE + ICON_DIRS[k][diff >= 0 ? 'inc' : 'dec'];
 
-    // Calculate positions
-    const startPct = TAPE_LEFT_PCT + (p[k] / 100) * (TAPE_W_PCT - ICON_W_PCT);
-    const endPct   = TAPE_LEFT_PCT + (state[k] / 100) * (TAPE_W_PCT - ICON_W_PCT);
+    // Calculate positions — use portrait constants if in portrait mode
+    const tapeLeft = isPortrait() ? TAPE_LEFT_PCT_P : TAPE_LEFT_PCT;
+    const tapeW    = isPortrait() ? TAPE_W_PCT_P    : TAPE_W_PCT;
+    const iconW    = isPortrait() ? ICON_W_PCT_P    : ICON_W_PCT;
+    const startPct = tapeLeft + (p[k] / 100) * (tapeW - iconW);
+    const endPct   = tapeLeft + (state[k] / 100) * (tapeW - iconW);
 
     // Place icon at PREV position instantly, fully visible
     icon.style.transition = 'none';
@@ -809,6 +897,10 @@ function goCasus(idx){
   document.getElementById('cas-desc').textContent = sentences;
   document.getElementById('cas-img').src           = sit.image||'';
 
+  // Reset submit button
+  const btnSubmit = document.getElementById('btn-submit');
+  if(btnSubmit) btnSubmit.disabled = true;
+
   const list=document.getElementById('options-list');
   list.innerHTML='';
   sit.options.forEach(opt=>{
@@ -820,8 +912,13 @@ function goCasus(idx){
       list.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
       li.classList.add('sel');
       selOpt=opt;
-      // Submit immediately on selection
-      setTimeout(()=>submitChoice(), 300);
+      if(isPortrait()){
+        // On mobile: activate button, wait for explicit confirm
+        if(btnSubmit) btnSubmit.disabled = false;
+      } else {
+        // On desktop: submit immediately
+        setTimeout(()=>submitChoice(), 300);
+      }
     };
     list.appendChild(li);
   });
